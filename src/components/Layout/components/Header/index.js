@@ -29,6 +29,8 @@ import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper, Menu as MenuItems } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import { NotificationBoxIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -125,9 +127,10 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy content="Upload" delay={[0, 200]}>
+                            <Tippy content="Inbox" delay={[0, 200]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
+                                    {/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
+                                    <NotificationBoxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -139,10 +142,11 @@ function Header() {
                     )}
                     <MenuItems items={currentUser ? userMenu : MENU_ITEMS}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/6fb04d6191fe5c84e61af4dc8d527744~c5_100x100.jpeg?lk3s=30310797&nonce=48405&refresh_token=000a1a194f4fabd1f58d4728cb382b05&x-expires=1737075600&x-signature=9UBbRyZSGdccD2q%2Fe%2Bjy%2BEICVUk%3D&shp=30310797&shcp=-"
                                 alt="User avatar"
+                                // fallback="https://fullstack.edu.vn/assets/f8-icon-lV2rGpF0.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
