@@ -25,7 +25,6 @@ function Button({
         onClick,
         ...passProps,
     };
-    console.log('className:', className);
 
     if (disable) {
         Object.keys(props).forEach((key) => {

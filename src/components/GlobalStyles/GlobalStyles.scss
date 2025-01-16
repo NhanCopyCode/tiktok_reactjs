@@ -7,6 +7,7 @@
     //Default layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --default-layout-horizontal-spacer: 24px;
     --black: #000;
     --white: #fff;
 }
@@ -15,6 +16,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "IBM Plex Sans", serif;
 }
 
 html {
@@ -22,7 +24,6 @@ html {
 }
 
 body {
-    font-family: "IBM Plex Sans", serif;
     font-size: 1.6rem;
 }
 
@@ -33,4 +34,24 @@ button {
 a {
     color: #000;
     text-decoration: none;
+}
+
+body {
+    .tippy-box {
+        background-color: #545454eb;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        color: var(--white);
+        padding: 3px;
+    }
+
+    .tippy-arrow {
+        color: #545454eb;
+    }
+
+    .tippy-box[data-placement^="bottom"] > .tippy-arrow:before {
+        top: -8px;
+    }
 }

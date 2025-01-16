@@ -8,4 +8,5 @@
 .container {
     width: 1150px;
     display: flex;
+    padding: 0 var(--default-layout-horizontal-spacer);
 }
