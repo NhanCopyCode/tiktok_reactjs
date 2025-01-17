@@ -67,7 +67,6 @@ function Menu({ items, children }) {
                 </div>
             )}
             onHide={() => {
-                console.log('On hide');
                 setHistory((prev) => {
                     const arr = prev.slice(0, 1);
                     setMenuTitle(arr);
