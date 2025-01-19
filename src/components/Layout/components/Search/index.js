@@ -7,6 +7,8 @@ import { faSearch, faSpinner, faTimesCircle } from '@fortawesome/free-solid-svg-
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { useEffect, useRef, useState } from 'react';
+import { useDebounce } from '~/hooks';
+import * as request from '~/utils/request';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -15,24 +17,35 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const DEBOUNCE_TIME = 500;
+    const debounce = useDebounce(searchValue, DEBOUNCE_TIME);
     const inputRef = useRef();
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounce.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                const data = res.data;
+
+        const fetchApi = async () => {
+            try {
+                const res = await request.get('users/search', {
+                    params: {
+                        q: debounce,
+                        type: 'less',
+                    },
+                });
+
+                setSearchResult(res.data);
                 setLoading(false);
-                setSearchResult(data);
-            })
-            .catch((err) => {
+            } catch (error) {
+                console.log('error: ', error);
                 setLoading(true);
-            });
-    }, [searchValue]);
+            }
+        };
+
+        fetchApi();
+    }, [debounce]);
 
     const handleClearSearchValue = () => {
         setSearchValue('');
@@ -45,6 +58,17 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleHiddenResult = () => {
+        setShowResult(false);
+    };
+
+    const handleSearchValue = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <>
             <HeadlessTippy
@@ -55,7 +79,9 @@ function Search() {
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
                             {searchResult.map((data) => {
-                                return <AccountItem key={data.id} data={data} />;
+                                return (
+                                    <AccountItem key={data.id} data={data} handleHiddenResult={handleHiddenResult} />
+                                );
                             })}
                         </PopperWrapper>
                     </div>
@@ -68,7 +94,7 @@ function Search() {
                         placeholder="Search"
                         spellCheck={false}
                         value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
+                        onChange={handleSearchValue}
                         onFocus={(e) => setShowResult(true)}
                     />
                     {searchValue && !loading && (

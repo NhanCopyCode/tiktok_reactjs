@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from '../Image';
 
 const cx = classNames.bind(styles);
-function AccountItem({ data }) {
+function AccountItem({ data, handleHiddenResult }) {
     return (
-        <Link to={`/@${encodeURIComponent(data.nickname)}`} className={cx('wrapper')}>
+        <Link to={`/@${encodeURIComponent(data.nickname)}`} className={cx('wrapper')} onClick={handleHiddenResult}>
             <Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
             <div className={cx('info')}>
                 <p className={cx('name')}>

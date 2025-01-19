@@ -8,7 +8,7 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-function Menu({ items, children }) {
+function Menu({ items, hideOnClick, children }) {
     const [history, setHistory] = useState([{ data: items }]);
     const [headerMenuTitle, setHeaderMenuTitle] = useState('');
     const current = history[history.length - 1];
@@ -46,6 +46,7 @@ function Menu({ items, children }) {
             offset={[8, 12]}
             placement="bottom-end"
             interactive
+            hideOnClick={hideOnClick}
             delay={[0, 700]}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>

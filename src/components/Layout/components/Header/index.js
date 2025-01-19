@@ -16,6 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import RouteConfig from '~/config/routes';
 
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
@@ -23,7 +24,7 @@ import images from '~/assets/images';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { faMessage, faMoon, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faTiktok } from '@fortawesome/free-brands-svg-icons';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper, Menu as MenuItems } from '~/components/Popper';
 import Button from '~/components/Button';
@@ -105,13 +106,12 @@ function Header() {
         },
     ];
 
-   
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={RouteConfig.home} className={cx('logo')}>
                     <img src={images.logo.default} alt="Logo image" />
-                </div>
+                </Link>
 
                 {/* Search */}
                 <Search />
@@ -137,7 +137,7 @@ function Header() {
                             <Button primary>Login</Button>
                         </>
                     )}
-                    <MenuItems items={currentUser ? userMenu : MENU_ITEMS}>
+                    <MenuItems hideOnClick={false} items={currentUser ? userMenu : MENU_ITEMS}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
