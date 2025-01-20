@@ -1,18 +1,18 @@
-import RouteConfig from '~/config/routes';
+import config from '~/config';
 
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Upload from '~/pages/Home/Upload';
-import { HeaderOnly } from '~/components/Layout';
+import { HeaderOnly } from '~/components/layouts';
 import Search from '~/pages/Search';
 import Profile from '~/pages/Profile';
 
 const publicRoutes = [
-    { path: RouteConfig.home, component: Home },
-    { path: RouteConfig.following, component: Following },
-    { path: RouteConfig.upload, component: Upload, layout: HeaderOnly },
-    { path: RouteConfig.search, component: Search, layout: null },
-    { path: RouteConfig.nickname, component: Profile },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.search, component: Search, layout: null },
+    { path: config.routes.nickname, component: Profile },
 ];
 
 const privateRoutes = [];
