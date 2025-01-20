@@ -70,7 +70,7 @@ function Search() {
     };
 
     return (
-        <>
+        <div>
             <HeadlessTippy
                 visible={showResult && searchResult.length > 0}
                 interactive={true}
@@ -111,7 +111,7 @@ function Search() {
                     </HeadlessTippy>
                 </div>
             </HeadlessTippy>
-        </>
+        </div>
     );
 }
 

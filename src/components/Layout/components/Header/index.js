@@ -1,18 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faArrowRightFromBracket,
     faCircleQuestion,
-    faCloudArrowUp,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faKeyboard,
-    faPlus,
     faRightFromBracket,
-    faSearch,
-    faSignIn,
-    faSpinner,
-    faUpload,
+    
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -21,12 +15,9 @@ import RouteConfig from '~/config/routes';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import { faMessage, faMoon, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faTiktok } from '@fortawesome/free-brands-svg-icons';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Wrapper as PopperWrapper, Menu as MenuItems } from '~/components/Popper';
+import {faMoon, faUser } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
+import {Menu as MenuItems } from '~/components/Popper';
 import Button from '~/components/Button';
 import { ChatIcon, NotificationBoxIcon } from '~/components/Icons';
 import Image from '~/components/Image';
@@ -42,7 +33,7 @@ const MENU_ITEMS = [
             data: [
                 {
                     code: 'vi',
-                    title: 'Việt Nam',
+                    title: 'Tiếng Việt',
                 },
                 {
                     code: 'en',
@@ -50,8 +41,117 @@ const MENU_ITEMS = [
                 },
                 {
                     code: 'vi',
-                    title: 'Việt Nam',
+                    title: 'Tiếng Việt',
                 },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                
             ],
         },
     },

@@ -1,9 +1,14 @@
 .wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: var(--default-layout-header-height, 60px);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
     display: flex;
     justify-content: center;
+    background-color: #fff;
+    z-index: 10;
 }
 
 .inner {
@@ -14,7 +19,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 
 // Actions
 .actions {
