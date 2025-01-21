@@ -25,6 +25,7 @@
         font-weight: 400;
         color: rgb(22, 24, 35);
         caret-color: var(--primary-color);
+        padding-right: 32px;
     }
 
     input:not(:placeholder-shown) ~ .search {
